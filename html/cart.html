@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PixelParts - Panier</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cart.css">
+    <script src="../js/cart.js" defer></script>
     <link rel="icon" href="../images/PixelParts.png">
 </head>
 
@@ -53,20 +55,34 @@
                     <thead>
                         <tr>
                             <th scope="col">Article</th>
-                            <th scope="col">Prix</th>
+                            <th scope="col">Prix Unitaire</th>
+                            <th scope="col">Prix Total</th>
                             <th scope="col">Quantité</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">Produit 1</th>
-                            <td>10</td>
-                            <td>1</td>
+                        <tr class="cart_product">
+                            <th scope="row">RTX 4090</th>
+                            <td><span class="unitary_price">7880.39</span>€</td>
+                            <td><span class="product_total">0</span>€</td>
+                            <td>
+                                <input type="number" value="1" min="1" max="99" class="quantity">
+                            </td>
+                            <td>
+                                <svg class="remove_product" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            </td>
                         </tr>
-                        <tr>
-                            <th scope="row">Produit 2</th>
-                            <td>23</td>
-                            <td>2</td>
+                        <tr class="cart_product">
+                            <th scope="row">RTX 4080</th>
+                            <td><span class="unitary_price">3089.99</span>€</td>
+                            <td><span class="product_total">0</span>€</td>
+                            <td>
+                                <input type="number" value="1" min="1" max="99" class="quantity">
+                            </td>
+                            <td>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="remove_product" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            </td>
                         </tr>
                     </tbody>
                     <tfoot>
@@ -74,7 +90,12 @@
                             <th scope="row" colspan="2">
                                 Total
                             </th>
-                            <td>33</td>
+                            <td colspan="3">
+                                <span id="total">
+                                    7880.39
+                                </span>
+                                €
+                            </td>
                         </tr>
                     </tfoot>
                 </table>
