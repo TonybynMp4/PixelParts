@@ -1,5 +1,6 @@
 #product img {
     max-width: 40%;
+    aspect-ratio: 1/1;
 }
 
 #product {
@@ -19,4 +20,9 @@
 
 #product_description {
     font-size: small;
+}
+
+#product_buy {
+    display: flex;
+    gap: 2rem;
 }
