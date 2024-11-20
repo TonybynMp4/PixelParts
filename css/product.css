@@ -1,0 +1,23 @@
+.product_img {
+    max-width: 40%;
+    height: auto;
+}
+
+#product {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+#product_details {
+    width: 60%;
+}
+
+#product_price {
+    display: flex;
+    gap: 2rem;
+}
+
+#product_description {
+    font-size: small;
+}
