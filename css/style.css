@@ -184,10 +184,12 @@ footer a {
     width: 8rem;
     margin-bottom: 1rem;
 }
+
 .product_price {
     font-weight: 900;
     margin: 0.15rem 0;
 }
+
 .add_to_cart {
     background-color: var(--primary-action);
     color: var(--secondary-text);
