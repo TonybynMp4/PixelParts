@@ -46,7 +46,7 @@
 </head>
 <body>
     <header>
-        <a href="/">
+        <a href="<?php echo BASE_PATH; ?>/">
             <img src="<?php echo BASE_PATH; ?>/images/Pixelparts.png" alt="Logo du site">
             <h1>
                 PixelParts
