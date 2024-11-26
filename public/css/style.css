@@ -41,8 +41,10 @@ header {
     height: 7.5vh;
 }
 
-header div {
+header a {
     display: flex;
+    color: inherit;
+    text-decoration: none;
     gap: 1rem;
     align-items: center;
 }

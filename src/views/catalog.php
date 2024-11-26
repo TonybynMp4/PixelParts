@@ -1,53 +1,15 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelParts - Catalogue</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="../images/PixelParts.png">
-</head>
-<body>
-    <header>
-        <div>
-            <img src="../images/PixelParts.png" alt="Logo du site">
-            <h1>
-                PixelParts
-            </h1>
-        </div>
+<?php
+    $title = 'PixelParts | Catalogue';
+    require_once __DIR__ . '/partials/header.php';
+?>
 
-        <nav>
-            <a href="../index.html">
-                Accueil
-            </a>
-            <a href="login.html">
-                Connexion
-            </a>
-            <a href="register.html">
-                Inscription
-            </a>
-            <a href="catalog.html">
-                Catalogue
-            </a>
-            <a href="product.html">
-                Produit
-            </a>
-            <a href="cart.html">
-                Panier
-            </a>
-        </nav>
-
-        <div id="nav_menu">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-        </div>
-    </header>
-    <main>
+<main>
         <section class="catalog">
             <fieldset class="catalog_product">
                 <legend>
                     RTX 4090
                 </legend>
-                <img class="catalog_product_img" src="../images/4090.png" alt="Image du produit">
+                <img class="catalog_product_img" src="<?php echo BASE_PATH; ?>/images/4090.png" alt="Image du produit">
                 <p class="product_price">
                     7880.39€
                 </p>
@@ -57,7 +19,7 @@
                 <legend>
                     RTX 4080
                 </legend>
-                <img class="catalog_product_img" src="../images/4090.png" alt="Image du produit">
+                <img class="catalog_product_img" src="<?php echo BASE_PATH; ?>/images/4090.png" alt="Image du produit">
                 <p class="product_price">
                     3089.99€
                 </p>
@@ -67,7 +29,7 @@
                 <legend>
                     RTX 4070
                 </legend>
-                <img class="catalog_product_img" src="../images/4090.png" alt="Image du produit">
+                <img class="catalog_product_img" src="<?php echo BASE_PATH; ?>/images/4090.png" alt="Image du produit">
                 <p class="product_price">
                     2800.00€
                 </p>
@@ -77,7 +39,7 @@
                 <legend>
                     RTX 4070 SUPER
                 </legend>
-                <img class="catalog_product_img" src="../images/4090.png" alt="Image du produit">
+                <img class="catalog_product_img" src="<?php echo BASE_PATH; ?>/images/4090.png" alt="Image du produit">
                 <p class="product_price">
                     3049.99€
                 </p>
@@ -87,7 +49,7 @@
                 <legend>
                     RTX 4070 SUPER TI
                 </legend>
-                <img class="catalog_product_img" src="../images/4090.png" alt="Image du produit">
+                <img class="catalog_product_img" src="<?php echo BASE_PATH; ?>/images/4090.png" alt="Image du produit">
                 <p class="product_price">
                     3249.99€
                 </p>
@@ -97,7 +59,7 @@
                 <legend>
                     RTX 4080 SUPER TI
                 </legend>
-                <img class="catalog_product_img" src="../images/4090.png" alt="Image du produit">
+                <img class="catalog_product_img" src="<?php echo BASE_PATH; ?>/images/4090.png" alt="Image du produit">
                 <p class="product_price">
                     3849.99€
                 </p>
@@ -107,7 +69,7 @@
                 <legend>
                     RTX 4080 SUPER
                 </legend>
-                <img class="catalog_product_img" src="../images/4090.png" alt="Image du produit">
+                <img class="catalog_product_img" src="<?php echo BASE_PATH; ?>/images/4090.png" alt="Image du produit">
                 <p class="product_price">
                     3649.99€
                 </p>
@@ -117,7 +79,7 @@
                 <legend>
                     RTX 4060
                 </legend>
-                <img class="catalog_product_img" src="../images/4090.png" alt="Image du produit">
+                <img class="catalog_product_img" src="<?php echo BASE_PATH; ?>/images/4090.png" alt="Image du produit">
                 <p class="product_price">
                     0.99€
                 </p>
@@ -125,20 +87,7 @@
             </fieldset>
         </section>
     </main>
-    <footer>
-        <p>
-            <a href="#">
-                Mentions légales
-            </a>
-        </p>
-        <p>
-            <a href="#">
-                Contact
-            </a>
-        </p>
-        <p>
-            &copy; 2002
-        </p>
-    </footer>
-</body>
-</html>
+
+<?php
+require_once __DIR__ . '/partials/footer.php';
+?>
