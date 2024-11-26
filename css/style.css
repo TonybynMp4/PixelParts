@@ -51,12 +51,27 @@ header img {
     height: 3rem;
 }
 
+#nav_open {
+    cursor: pointer;
+    display: none;
+}
+
+#nav_close {
+    width: min-content;
+    align-self: flex-end;
+    cursor: pointer;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+}
+
 #nav_menu {
     display: none;
 }
 
 nav a {
     text-decoration: none;
+    min-width: min-content;
     color: inherit;
     padding-block: 0.35rem;
     padding-inline: 0.75rem;
@@ -73,6 +88,24 @@ nav a:hover {
 nav {
     display: flex;
     gap: 1rem;
+}
+
+aside nav {
+    flex-direction: column;
+    gap: 1rem;
+}
+
+aside {
+    display: none;
+    position: fixed;
+    background-color: var(--background-secondary);
+    color: var(--secondary-text);
+    padding: 1rem;
+    height: 100vh;
+    min-width: 20%;
+    max-width: 50%;
+    right: 0;
+    top: 0;
 }
 
 main {
@@ -147,9 +180,8 @@ footer a {
         display: none;
     }
 
-    #nav_menu {
+    #nav_open {
         display: block;
-        cursor: pointer;
     }
 }
 
