@@ -9,7 +9,7 @@
                 <legend>
                     RTX 4090
                 </legend>
-                <img class="catalog_product_img" src="<?php echo BASE_PATH; ?>/images/4090.png" alt="Image du produit">
+                <img class="catalog_product_img" src="<?= BASE_PATH; ?>/images/4090.png" alt="Image du produit">
                 <p class="product_price">
                     7880.39€
                 </p>
@@ -19,7 +19,7 @@
                 <legend>
                     RTX 4080
                 </legend>
-                <img class="catalog_product_img" src="<?php echo BASE_PATH; ?>/images/4090.png" alt="Image du produit">
+                <img class="catalog_product_img" src="<?= BASE_PATH; ?>/images/4090.png" alt="Image du produit">
                 <p class="product_price">
                     3089.99€
                 </p>
@@ -29,7 +29,7 @@
                 <legend>
                     RTX 4070
                 </legend>
-                <img class="catalog_product_img" src="<?php echo BASE_PATH; ?>/images/4090.png" alt="Image du produit">
+                <img class="catalog_product_img" src="<?= BASE_PATH; ?>/images/4090.png" alt="Image du produit">
                 <p class="product_price">
                     2800.00€
                 </p>
@@ -39,7 +39,7 @@
                 <legend>
                     RTX 4070 SUPER
                 </legend>
-                <img class="catalog_product_img" src="<?php echo BASE_PATH; ?>/images/4090.png" alt="Image du produit">
+                <img class="catalog_product_img" src="<?= BASE_PATH; ?>/images/4090.png" alt="Image du produit">
                 <p class="product_price">
                     3049.99€
                 </p>
@@ -49,7 +49,7 @@
                 <legend>
                     RTX 4070 SUPER TI
                 </legend>
-                <img class="catalog_product_img" src="<?php echo BASE_PATH; ?>/images/4090.png" alt="Image du produit">
+                <img class="catalog_product_img" src="<?= BASE_PATH; ?>/images/4090.png" alt="Image du produit">
                 <p class="product_price">
                     3249.99€
                 </p>
@@ -59,7 +59,7 @@
                 <legend>
                     RTX 4080 SUPER TI
                 </legend>
-                <img class="catalog_product_img" src="<?php echo BASE_PATH; ?>/images/4090.png" alt="Image du produit">
+                <img class="catalog_product_img" src="<?= BASE_PATH; ?>/images/4090.png" alt="Image du produit">
                 <p class="product_price">
                     3849.99€
                 </p>
@@ -69,7 +69,7 @@
                 <legend>
                     RTX 4080 SUPER
                 </legend>
-                <img class="catalog_product_img" src="<?php echo BASE_PATH; ?>/images/4090.png" alt="Image du produit">
+                <img class="catalog_product_img" src="<?= BASE_PATH; ?>/images/4090.png" alt="Image du produit">
                 <p class="product_price">
                     3649.99€
                 </p>
@@ -79,7 +79,7 @@
                 <legend>
                     RTX 4060
                 </legend>
-                <img class="catalog_product_img" src="<?php echo BASE_PATH; ?>/images/4090.png" alt="Image du produit">
+                <img class="catalog_product_img" src="<?= BASE_PATH; ?>/images/4090.png" alt="Image du produit">
                 <p class="product_price">
                     0.99€
                 </p>

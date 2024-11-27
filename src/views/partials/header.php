@@ -26,9 +26,9 @@
     <title>
         PixelParts <?php if (isset($title)) { echo ' | ' . $title; } ?>
     </title>
-    <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/style.css">
-    <script src="<?php echo BASE_PATH; ?>/js/header.js" defer></script>
-    <link rel="icon" href="<?php echo BASE_PATH; ?>/images/Pixelparts.png">
+    <link rel="stylesheet" href="<?= BASE_PATH; ?>/css/style.css">
+    <script src="<?= BASE_PATH; ?>/js/header.js" defer></script>
+    <link rel="icon" href="<?= BASE_PATH; ?>/images/Pixelparts.png">
     <?php
         if (isset($styles) && is_array($styles)) {
             foreach ($styles as $style) {
@@ -46,8 +46,8 @@
 </head>
 <body>
     <header>
-        <a href="<?php echo BASE_PATH; ?>/">
-            <img src="<?php echo BASE_PATH; ?>/images/Pixelparts.png" alt="Logo du site">
+        <a href="<?= BASE_PATH; ?>/">
+            <img src="<?= BASE_PATH; ?>/images/Pixelparts.png" alt="Logo du site">
             <h1>
                 PixelParts
             </h1>
