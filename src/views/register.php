@@ -1,5 +1,5 @@
 <?php
-$title = 'PixelParts | Catalogue';
+$title = 'Catalogue';
 require_once __DIR__ . '/partials/header.php';
 ?>
 

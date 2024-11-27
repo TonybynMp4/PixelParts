@@ -24,7 +24,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        PixelParts <?php if ($title) { echo ' | ' . $title; } ?>
+        PixelParts <?php if (isset($title)) { echo ' | ' . $title; } ?>
     </title>
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/style.css">
     <script src="<?php echo BASE_PATH; ?>/js/header.js" defer></script>
