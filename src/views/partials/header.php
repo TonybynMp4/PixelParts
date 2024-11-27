@@ -4,8 +4,6 @@
     function printNav() {
         $nav = [
             'Accueil' => BASE_PATH.'/',
-            'Connexion' => BASE_PATH.'/login',
-            'Inscription' => BASE_PATH.'/register',
             'Catalogue' => BASE_PATH.'/catalog',
             'Produit' => BASE_PATH.'/product',
             'Panier' => BASE_PATH.'/cart',
@@ -13,7 +11,7 @@
         ];
 
         foreach ($nav as $key => $value) {
-            echo '<a href="' . $value . '">' . $key . '</a>';
+            echo '<a class="nav_button" href="' . $value . '">' . $key . '</a>';
         }
     }
 ?>
@@ -59,13 +57,33 @@
             ?>
         </nav>
 
+        <!-- Account -->
+        <div id="nav_account">
+            <?php if (isset($_SESSION['user'])) { ?>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <?=$_SESSION['user']['name'];?>
+                <a class="nav_button" href="<?= BASE_PATH; ?>/logout">Déconnexion</a>
+            <?php } else { ?>
+                <a class="nav_button" href="<?= BASE_PATH; ?>/login">Connexion</a>
+            <?php } ?>
+        </div>
+
         <div id="nav_open">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
         </div>
     </header>
     <aside id="nav_menu">
-        <div id="nav_close">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        <div style="display: flex; margin-bottom:2em; gap:1em; align-items: center; justify-content: space-between;">
+            <div id="opened_nav_account">
+                <?php if (isset($_SESSION['user'])) { ?>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <?=$_SESSION['user']['name'];?>
+                    <a class="nav_button" href="<?= BASE_PATH; ?>/logout">Déconnexion</a>
+                <?php } else { ?>
+                    <a class="nav_button" href="<?= BASE_PATH; ?>/login">Connexion</a>
+                <?php } ?>
+            </div>
+                <svg id="nav_close" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </div>
         <nav>
             <?php printNav(); ?>

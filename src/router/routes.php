@@ -11,6 +11,7 @@ $router->setBasePath($basePath);
 // Routes
 $router->map('GET', '/', 'MainController#home', 'home');
 $router->map('GET', '/login', 'MainController#login', 'login');
+$router->map('GET', '/logout', 'MainController#logout', 'logout');
 $router->map('GET', '/register', 'MainController#register', 'register');
 $router->map('GET', '/catalog', 'MainController#catalog', 'catalog');
 $router->map('GET', '/product', 'MainController#product', 'product');

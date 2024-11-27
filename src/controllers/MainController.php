@@ -29,6 +29,12 @@ class MainController
         $this->render('login');
     }
 
+    public function logout()
+    {
+        session_destroy();
+        header('Location: /');
+    }
+
     // Page "Inscription"
     public function register()
     {
