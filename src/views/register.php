@@ -1,5 +1,5 @@
 <?php
-$title = 'Catalogue';
+$title = 'Inscription';
 require_once __DIR__ . '/partials/header.php';
 ?>
 

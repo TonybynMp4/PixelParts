@@ -1,5 +1,5 @@
 <?php
-$title = 'Produit';
+$title = $product['name'] ?? 'Produit';
 $styles = ['product.css'];
 require_once __DIR__ . '/partials/header.php';
 ?>
