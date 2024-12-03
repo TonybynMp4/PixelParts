@@ -1,6 +1,4 @@
 <?php
-    define('BASE_PATH', '/ecommerce/public');
-
     function printNav() {
         $nav = [
             'Accueil' => BASE_PATH.'/',
