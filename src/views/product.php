@@ -1,5 +1,4 @@
 <?php
-    dump($product);
     $title = $product->getName() || 'Produit';
     $styles = ['product.css', 'catalog.css'];
     require_once __DIR__ . '/partials/header.php';

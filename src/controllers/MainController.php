@@ -10,7 +10,20 @@ class MainController
     // Page d'accueil
     public function home()
     {
-        $this->render('home');
+        $popularProducts = new Product();
+        $filters = [
+            [
+                'name' => 'rate',
+                'condition' => '>=',
+                'value' => 4,
+            ]
+        ];
+        $popularProducts = $popularProducts->getWithFilters($filters, 4);
+        $data = [
+            'popularProducts' => $popularProducts
+        ];
+
+        $this->render('home', $data);
     }
 
     public function catalog()
@@ -25,7 +38,26 @@ class MainController
             $categories = $categories->findAll();
         } else {
             $products = new Product();
-            $products = $products->getWithFilters($search, $brand_id, $type_id, $category_id);
+            $filters = array_filter([
+                $search ? [
+                    'name' => 'name',
+                    'value' => $search,
+                    'condition' => 'LIKE'
+                ] : null,
+                $brand_id ? [
+                    'name' => 'brand_id',
+                    'value' => $brand_id
+                ] : null,
+                $type_id ? [
+                    'name' => 'type_id',
+                    'value' => $type_id
+                ] : null,
+                $category_id ? [
+                    'name' => 'category_id',
+                    'value' => $category_id
+                ] : null
+            ]);
+            $products = $products->getWithFilters($filters);
             $Category = new Category();
             $Category = $Category->find($category_id);
         }
@@ -56,11 +88,27 @@ class MainController
         $brand = $brand->find($product->getBrand_id());
 
         $similarProducts = new Product();
-        $similarProducts = $similarProducts->getWithFilters(null, $product->getBrand_id(), $product->getType_id(), $product->getCategory_id(), 4);
-        $similarProducts = array_filter($similarProducts, function ($similarProduct) use ($product) {
-            return $similarProduct->getId() !== $product->getId();
-        });
-        $similarProducts = array_slice($similarProducts, 0, 5);
+        $filters = [
+            [
+                'name' => 'brand_id',
+                'value' => $product->getBrand_id(),
+            ],
+            [
+                'name' => 'category_id',
+                'value' => $product->getCategory_id(),
+            ],
+            [
+                'name' => 'type_id',
+                'value' => $product->getType_id(),
+            ],
+            [
+                'name' => 'id',
+                'condition' => '!=',
+                'value' => $product->getId(),
+            ]
+        ];
+
+        $similarProducts = $similarProducts->getWithFilters($filters, 5);
 
         $data = [
             'product' => $product,

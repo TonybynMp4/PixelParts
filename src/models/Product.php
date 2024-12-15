@@ -88,22 +88,37 @@ class Product extends Model
         return $products;
     }
 
-    public function getWithFilters($search, $brand_id, $type_id, $category_id)
+    /**
+     * Récupère les produits en fonction des filtres passés en paramètre
+        filters = [
+            [
+                'condition' => 'AND', // AND, OR, NOT, IN, ou combinaison de ces valeurs
+                'name' => 'id',
+                'value' => 1
+            ],
+        ]
+     */
+    public function getWithFilters($filters = null, $limit = null)
     {
-        // On commence par créer la requete de base
-        $where = array_filter([
-            $search ? "name LIKE '%$search%'" : null,
-            $brand_id ? "brand_id = $brand_id" : null,
-            $type_id ? "type_id = $type_id" : null,
-            $category_id ? "category_id = $category_id" : null
-        ]);
+        // on créer la liste de conditions
+        $where = [];
+        if ($filters) {
+            foreach ($filters as $filter) {
+                if (!$filter['value'] || !$filter['name']) {
+                    continue;
+                }
 
-        if (!$where) {
-            return $this->findAll();
+                $filter['condition'] = $filter['condition'] ?? '=';
+                if ($filter['condition'] === 'IN') {
+                    $filter['value'] = '('. implode(',', $filter['value']) .')';
+                }
+                $where[] = $filter['name'] .' '. $filter['condition'] .' '. $filter['value'];
+            }
         }
 
-        $sql = "SELECT * FROM product WHERE ". implode(' AND ', $where);
-
+        $sql = "SELECT * FROM product "
+        .(!empty($where) ? 'WHERE ' . implode(' AND ', $where) : '')
+        .($limit ? " LIMIT $limit" : '');
         // On execute la requete
         $pdoStatement = $this->db->query($sql);
 
