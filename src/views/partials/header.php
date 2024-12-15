@@ -3,11 +3,8 @@
         $nav = [
             'Accueil' => BASE_PATH.'/',
             'Catalogue' => BASE_PATH.'/catalog',
-            'Produit' => BASE_PATH.'/product',
-            'Panier' => BASE_PATH.'/cart',
             'À propos' => BASE_PATH.'/about'
         ];
-
         foreach ($nav as $key => $value) {
             echo '<a class="nav_button" href="' . $value . '">' . $key . '</a>';
         }
@@ -57,6 +54,7 @@
 
         <!-- Account -->
         <div id="nav_account">
+            <a class="nav_button" href="<?= BASE_PATH.'/cart'?>">Panier</a>
             <?php if (isset($_SESSION['user'])) { ?>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 <?=$_SESSION['user']['name'];?>
@@ -73,6 +71,7 @@
     <aside id="nav_menu">
         <div style="display: flex; margin-bottom:2em; gap:1em; align-items: center; justify-content: space-between;">
             <div id="opened_nav_account">
+                <a class="nav_button" href="<?= BASE_PATH.'/cart'?>">Panier</a>
                 <?php if (isset($_SESSION['user'])) { ?>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                     <?=$_SESSION['user']['name'];?>

@@ -22,6 +22,13 @@
     --link: #0866ff;
 }
 
+.unstyled_anchor {
+    text-decoration: none;
+    color: inherit;
+    display: inherit;
+    flex-direction: inherit;
+}
+
 body {
     background-color: var(--background);
     color: var(--text);
@@ -132,15 +139,9 @@ main section {
     flex-direction: column;
 }
 
-.catalog fieldset {
-    width: 17%;
-}
-
-.catalog {
-    display: flex;
-    justify-content: space-evenly;
-    gap: 2rem;
-    flex-wrap: wrap;
+.product_price {
+    font-weight: 900;
+    margin: 0.15rem 0;
 }
 
 main section fieldset {
@@ -195,30 +196,12 @@ footer a {
     }
 }
 
-.catalog_product_img {
-    width: 8rem;
-    margin-bottom: 1rem;
-}
-
-.product_price {
-    font-weight: 900;
-    margin: 0.15rem 0;
-}
-
 .button_primary {
     background-color: var(--primary-action);
     color: var(--secondary-text);
     border: none;
+    text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     cursor: pointer;
-}
-
-.catalog_product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid var(--background-secondary);
-    border-radius: 0.5rem;
-    padding: 1rem;
 }

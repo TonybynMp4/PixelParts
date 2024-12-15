@@ -1,5 +1,10 @@
 <?php
 
+use App\Models\Brand;
+use App\Models\Product;
+use App\Models\Type;
+use App\Models\Category;
+
 class MainController
 {
     // Page d'accueil
@@ -10,12 +15,60 @@ class MainController
 
     public function catalog()
     {
-        $this->render('catalog');
+        $search = $_GET['search'] ?? null;
+        $brand_id = $_GET['brand_id'] ?? null;
+        $type_id = $_GET['type_id'] ?? null;
+        $category_id = $_GET['category_id'] ?? null;
+
+        if (empty($search) && empty($brand_id) && empty($type_id) && empty($category_id)) {
+            $categories = new Category();
+            $categories = $categories->findAll();
+        } else {
+            $products = new Product();
+            $products = $products->getWithFilters($search, $brand_id, $type_id, $category_id);
+            $Category = new Category();
+            $Category = $Category->find($category_id);
+        }
+
+
+        $data = [
+            'products' => $products ?? null,
+            'category' => $Category ?? null,
+            'categories' => $categories ?? null,
+            'search' => $search ?? null,
+        ];
+
+        $this->render('catalog', $data);
     }
 
     public function product()
     {
-        $this->render('product');
+        $id = $_GET['id'] ?? null;
+        $product = new Product();
+        $product = $product->find($id);
+
+        if (!$product) {
+            $this->notFound();
+            return;
+        }
+
+        $brand = new Brand();
+        $brand = $brand->find($product->getBrand_id());
+
+        $similarProducts = new Product();
+        $similarProducts = $similarProducts->getWithFilters(null, $product->getBrand_id(), $product->getType_id(), $product->getCategory_id(), 4);
+        $similarProducts = array_filter($similarProducts, function ($similarProduct) use ($product) {
+            return $similarProduct->getId() !== $product->getId();
+        });
+        $similarProducts = array_slice($similarProducts, 0, 5);
+
+        $data = [
+            'product' => $product,
+            'brand' => $brand,
+            'similarProducts' => $similarProducts
+        ];
+
+        $this->render('product', $data);
     }
 
     public function cart()
