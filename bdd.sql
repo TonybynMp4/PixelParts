@@ -1,6 +1,6 @@
-CREATE DATABASE `serveur-web`;
+CREATE DATABASE `pixelparts`;
 
-USE `serveur-web`;
+USE `pixelparts`;
 
 DROP TABLE IF EXISTS `brand` ;
 
@@ -60,21 +60,31 @@ CREATE TABLE IF NOT EXISTS `product` (
 ) ENGINE = InnoDB;
 
 START TRANSACTION;
-INSERT INTO `brand` (`name`) VALUES ('Asus'), ('Acer'), ('HP'), ('Dell'), ('Apple'), ('Samsung'), ('Sony'), ('Lenovo'), ('MSI'), ('Toshiba');
+INSERT INTO `brand` (`name`) VALUES ('AMD'), ('Intel'), ('Asus'), ('Acer'), ('HP'), ('Dell'), ('Apple'), ('Samsung'), ('Sony'), ('Lenovo'), ('MSI'), ('Toshiba');
 
 COMMIT;
 
-START TRANSACTION;
 /*
     Pixel Parts, vente de matériel informatique
 */
+INSERT INTO `type` (`name`) VALUES
+('AM4'), ('Intel 1851'), ('Intel 1200'),
+('DDR4'), ('DDR5'),
+('SATA'), ('SSD'), ('M.2'),
+('4090'), ('4060'), ('4070 Ti Super'),
+('AMD'), ('Intel'), ('Watercooling');
+
 INSERT INTO `category` (`name`, `subtitle`, `picture`, `show_home`) VALUES
-('AM4', 'Socket AM4', 'assets/images/categories/am4.jpg', 1), ('Intel 1851', 'Socket Intel 1851', 'assets/images/categories/intel1851.jpg', 1), ('Intel 1200', 'Socket Intel 1200', NULL, 1),
-('DDR4', 'Mémoire DDR4', 'assets/images/categories/ddr4.jpg', 1), ('DDR5', 'Mémoire DDR5', 'assets/images/categories/ddr5.jpg', 1),
-('SATA', 'Disque Dur SATA', 'assets/images/categories/sata.jpg', 1), ('SSD', 'Disque Dur SSD', 'assets/images/categories/ssd.jpg', 1), ('M.2', 'Disque Dur M.2', 'assets/images/categories/m2.jpg', 1),
-('4090', 'Carte Graphique 4090', 'assets/images/categories/4090.jpg', 1), ('4080', 'Carte Graphique 4080', 'assets/images/categories/4080.jpg', 1), ('3070', 'Carte Graphique 3070', 'assets/images/categories/3070.jpg', 1),
-('AMD', 'Processeur AMD', 'assets/images/categories/amd.jpg', 1), ('Intel', 'Processeur Intel', 'assets/images/categories/intel.jpg', 1), ('Watercooling', 'Watercooling', 'assets/images/categories/watercooling.jpg', 1);
-INSERT INTO `type` (`name`) VALUES ('Carte Graphique'), ('Processeur'), ('Carte Mère'), ('Mémoire'), ('Disque Dur'), ('SSD'), ('Alimentation'), ('Boitier'), ('Ventirad'), ('Watercooling');
+('Carte Graphique', 'Les meilleures cartes graphiques', 'carte-graphique.jpg', 1),
+('Processeur', 'Les meilleurs processeurs', 'processeur.jpg', 1),
+('Carte Mère', 'Les meilleures cartes mères', 'carte-mere.jpg', 1),
+('Mémoire', 'Les meilleures mémoires', 'memoire.jpg', 1),
+('Disque Dur', 'Les meilleurs disques durs', 'disque-dur.jpg', 1),
+('SSD', 'Les meilleurs SSD', 'ssd.jpg', 1),
+('Alimentation', 'Les meilleures alimentations', 'alimentation.jpg', 1),
+('Boitier', 'Les meilleurs boitiers', 'boitier.jpg', 1),
+('Ventirad', 'Les meilleurs ventirads', 'ventirad.jpg', 1),
+('Watercooling', 'Les meilleurs watercooling', 'watercooling.jpg', 1);
 
 COMMIT;
 
@@ -84,25 +94,30 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 INSERT INTO `product` (`name`, `description`, `picture`, `price`, `rate`, `status`, `brand_id`, `category_id`, `type_id`) VALUES
-('Ryzen 9 5950X', 'Processeur AMD Ryzen 9 5950X', 'assets/images/products/ryzen95950x.jpg', 799.99, 5, 1, 1, 12, 2),
-('Ryzen 9 5900X', 'Processeur AMD Ryzen 9 5900X', 'assets/images/products/ryzen95900x.jpg', 699.99, 5, 1, 1, 12, 2),
-('Ryzen 7 5800X', 'Processeur AMD Ryzen 7 5800X', 'assets/images/products/ryzen75800x.jpg', 499.99, 5, 1, 1, 12, 2),
-('Ryzen 5 5600X', 'Processeur AMD Ryzen 5 5600X', 'assets/images/products/ryzen55600x.jpg', 299.99, 5, 1, 1, 12, 2),
-('Core i9-11900K', 'Processeur Intel Core i9-11900K', 'assets/images/products/corei911900k.jpg', 599.99, 5, 1, 2, 12, 2),
-('Core i7-11700K', 'Processeur Intel Core i7-11700K', 'assets/images/products/corei711700k.jpg', 399.99, 5, 1, 2, 12, 2),
-('Core i5-11600K', 'Processeur Intel Core i5-11600K', 'assets/images/products/corei511600k.jpg', 299.99, 5, 1, 2, 12, 2),
-('Core i3-11400', 'Processeur Intel Core i3-11400', 'assets/images/products/corei311400.jpg', 199.99, 5, 1, 2, 12, 2),
-('RTX 4090', 'Carte Graphique RTX 4090', 'assets/images/products/rtx4090.jpg', 1999.99, 5, 1, 1, 10, 1),
-('RTX 4080', 'Carte Graphique RTX 4080', 'assets/images/products/rtx4080.jpg', 1499.99, 5, 1, 1, 9, 1),
-('RTX 3070', 'Carte Graphique RTX 3070', 'assets/images/products/rtx3070.jpg', 699.99, 5, 1, 1, 11, 1),
-('DDR4 16Go', 'Mémoire DDR4 16Go', 'assets/images/products/ddr416go.jpg', 79.99, 5, 1, 1, 4, 4),
-('DDR4 32Go', 'Mémoire DDR4 32Go', 'assets/images/products/ddr432go.jpg', 149.99, 5, 1, 1, 4, 4),
-('DDR5 16Go', 'Mémoire DDR5 16Go', 'assets/images/products/ddr516go.jpg', 99.99, 5, 1, 1, 5, 4),
-('DDR5 32Go', 'Mémoire DDR5 32Go', 'assets/images/products/ddr532go.jpg', 199.99, 5, 1, 1, 5, 4),
-('SATA 1To', 'Disque Dur SATA 1To', 'assets/images/products/sata1to.jpg', 49.99, 5, 1, 1, 6, 5),
-('SATA 2To', 'Disque Dur SATA 2To', 'assets/images/products/sata2to.jpg', 79.99, 5, 1, 1, 6, 5),
-('SSD 500Go', 'Disque Dur SSD 500Go', 'assets/images/products/ssd500go.jpg', 59.99, 5, 1, 1, 7, 6),
-('SSD 1To', 'Disque Dur SSD 1To', 'assets/images/products/ssd1to.jpg', 99.99, 5, 1, 1, 7, 6),
-('M.2 500Go', 'Disque Dur M.2 500Go', 'assets/images/products/m2500go.jpg', 69.99, 5, 1, 1, 8, 6),
-('M.2 1To', 'Disque Dur M.2 1To', 'assets/images/products/m21to.jpg', 119.99, 5, 1, 1, 8, 6);
+('Ryzen 9 5950X', 'Processeur AMD Ryzen 9 5950X', 'ryzen95950x.jpg', 799.99, 5, 1, 1, 2, 2),
+('Ryzen 9 5900X', 'Processeur AMD Ryzen 9 5900X', 'ryzen95900x.jpg', 699.99, 5, 1, 1, 2, 2),
+('Ryzen 7 5800X', 'Processeur AMD Ryzen 7 5800X', 'ryzen75800x.jpg', 499.99, 5, 1, 1, 2, 2),
+('Ryzen 5 5600X', 'Processeur AMD Ryzen 5 5600X', 'ryzen55600x.jpg', 299.99, 5, 1, 1, 2, 2),
+('Core i9-11900K', 'Processeur Intel Core i9-11900K', 'corei911900k.jpg', 599.99, 5, 1, 2, 2, 2),
+('Core i7-11700K', 'Processeur Intel Core i7-11700K', 'corei711700k.jpg', 399.99, 5, 1, 2, 2, 2),
+('Core i5-11600K', 'Processeur Intel Core i5-11600K', 'corei511600k.jpg', 299.99, 5, 1, 2, 2, 2),
+('Core i3-11400', 'Processeur Intel Core i3-11400', 'corei311400.jpg', 199.99, 5, 1, 2, 2, 2),
+('RTX 4090', 'Carte Graphique RTX 4090', 'rtx4090.jpg', 1999.99, 5, 1, 1, 1, 1),
+('Gigabyte GeForce RTX 4060 WINDFORCE OC', 'Carte Graphique RTX 4060 de la marque Gigabyte', 'rtx4060_windforce_oc.jpg', 329.99, 5, 1, 1, 1, 1),
+('RTX 4070 Ti SUPER', 'Carte Graphique RTX 4070 Ti SUPER de la marque MSI ', 'msi_4070tisuper.jpg', 1129.99, 5, 1, 1, 1, 1),
+('DDR4 16Go', 'Mémoire DDR4 16Go', 'ddr416go.jpg', 79.99, 5, 1, 1, 4, 4),
+('DDR4 32Go', 'Mémoire DDR4 32Go', 'ddr432go.jpg', 149.99, 5, 1, 1, 4, 4),
+('DDR5 16Go', 'Mémoire DDR5 16Go', 'ddr516go.jpg', 99.99, 5, 1, 1, 4, 4),
+('DDR5 32Go', 'Mémoire DDR5 32Go', 'ddr532go.jpg', 199.99, 5, 1, 1, 4, 4),
+('SATA 1To', 'Disque Dur SATA 1To', 'sata1to.jpg', 49.99, 5, 1, 1, 5, 5),
+('SATA 2To', 'Disque Dur SATA 2To', 'sata2to.jpg', 79.99, 5, 1, 1, 5, 5),
+('SSD 500Go', 'Disque Dur SSD 500Go', 'ssd500go.jpg', 59.99, 5, 1, 1, 6, 6),
+('SSD 1To', 'Disque Dur SSD 1To', 'ssd1to.jpg', 99.99, 5, 1, 1, 6, 6),
+('M.2 500Go', 'Disque Dur M.2 500Go', 'm2500go.jpg', 69.99, 5, 1, 1, 6, 6),
+('M.2 1To', 'Disque Dur M.2 1To', 'm21to.jpg', 119.99, 5, 1, 1, 6, 6);
 COMMIT;
+
+DROP USER IF EXISTS 'pixelparts'@'localhost';
+
+CREATE USER 'pixelparts'@'localhost' IDENTIFIED BY 'test';
+GRANT ALL PRIVILEGES ON pixelparts.* TO 'pixelparts'@'localhost';
