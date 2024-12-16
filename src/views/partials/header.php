@@ -54,9 +54,8 @@
 
         <!-- Account -->
         <div id="nav_account">
-            <a class="nav_button" href="<?= BASE_PATH.'/cart'?>">Panier</a>
             <?php if (isset($_SESSION['user'])) { ?>
-                <div style="display: flex; align-items: center; margin-left: 2em;">
+                <div style="display: flex; align-items: center;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                     <?=$_SESSION['user']['firstname'];?>
                 </div>
@@ -64,6 +63,7 @@
             <?php } else { ?>
                 <a class="nav_button" href="<?= BASE_PATH; ?>/login">Connexion</a>
             <?php } ?>
+            <a class="nav_button" href="<?= BASE_PATH.'/cart'?>">Panier</a>
         </div>
 
         <div id="nav_open">
@@ -73,7 +73,6 @@
     <aside id="nav_menu">
         <div style="display: flex; margin-bottom:2em; gap:1em; align-items: center; justify-content: space-between;">
             <div id="opened_nav_account">
-                <a class="nav_button" href="<?= BASE_PATH.'/cart'?>">Panier</a>
                 <?php if (isset($_SESSION['user'])) { ?>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                     <?=$_SESSION['user']['firstname'];?>
@@ -81,6 +80,7 @@
                 <?php } else { ?>
                     <a class="nav_button" href="<?= BASE_PATH; ?>/login">Connexion</a>
                 <?php } ?>
+                <a class="nav_button" href="<?= BASE_PATH.'/cart'?>">Panier</a>
             </div>
                 <svg id="nav_close" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </div>
