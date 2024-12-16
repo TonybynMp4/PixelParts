@@ -24,7 +24,9 @@
                             <?= $product->getPrice(); ?>
                         </span>€
                     </p>
-                    <button class="button_primary">Ajouter au panier</button>
+                    <a class="button_primary" href="<?= BASE_PATH; ?>/cart/addToCart?id=<?= $product->getId(); ?>">
+                        Ajouter au panier
+                    </a>
                 </div>
             </div>
         </fieldset>

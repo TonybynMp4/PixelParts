@@ -1,30 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
-    function calculateTotal() {
-        let total = 0;
-        const prices = document.getElementsByClassName('product_total');
-        Array.from(prices).forEach(price => {
-            total += parseFloat(price.textContent);
+    const removeButtons = document.querySelectorAll('.remove_product');
+    removeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.getAttribute('data-product-id');
+            const url = `/cart/removeFromCart?product_id=${productId}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.reload();
+                    }
+                });
         });
-        document.getElementById('total').textContent = total.toFixed(2);
-    }
+    });
 
-    function calculateProductTotal(product) {
-        const unitaryPrice = parseFloat(product.getElementsByClassName('unitary_price')[0].textContent);
-        const quantity = parseInt(product.getElementsByClassName('quantity')[0].value);
-        const total = unitaryPrice * quantity;
+    const quantityInputs = document.querySelectorAll('.quantity');
+    quantityInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            const productId = this.getAttribute('data-product-id');
+            const quantity = this.value;
+            const url = `/cart/updateQuantity?id=${productId}&quantity=${quantity}`;
 
-        product.getElementsByClassName('product_total')[0].textContent = total.toFixed(2);
-    }
-
-    const products = document.getElementsByClassName('cart_product');
-    for (let i = 0; i < products.length; i++) {
-        const product = products[i];
-        product.getElementsByClassName('quantity')[0].addEventListener('change', function() {
-            calculateProductTotal(product);
-            calculateTotal();
+            window.location.href = url;
         });
-
-        calculateProductTotal(product);
-    };
-    calculateTotal();
+    });
 });

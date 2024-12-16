@@ -1,0 +1,9 @@
+#password:user-valid,
+#passwordConfirmation:user-valid {
+    border: 2px solid green;
+}
+
+#password:user-invalid,
+#passwordConfirmation:user-invalid {
+    border: 2px solid red;
+}

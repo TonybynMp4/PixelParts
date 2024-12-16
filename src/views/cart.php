@@ -3,13 +3,11 @@ $title = 'À propos';
 $scripts = ['cart.js'];
 $styles = ['cart.css'];
 
-$products = $_SESSION['cart'] ?? [];
-
 require_once 'partials/header.php';
 ?>
 <main>
     <section class="cart">
-        <form action="process_cart.php" method="post">
+        <form action="/cart/validate" method="post">
             <fieldset>
                 <legend>
                     Panier
@@ -34,17 +32,19 @@ require_once 'partials/header.php';
                         <?php else : ?>
                             <?php foreach ($products as $product) : ?>
                                 <tr class="cart_product">
-                                    <th scope="row"><?= $product->getName() ?></th>
-                                    <td><span class="unitary_price"><?= $product->getPrice() ?></span>€</td>
-                                    <td><span class="product_total">0</span>€</td>
+                                    <th scope="row"><?= $product['product']->getName() ?></th>
+                                    <td><span class="unitary_price"><?= $product['product']->getPrice() ?></span>€</td>
+                                    <td><span class="product_total"><?= $product['product']->getPrice() * $product['quantity'] ?></span>€</td>
                                     <td>
-                                        <input type="number" name="quantity[<?= $product->getId() ?>]" value="1" min="1" max="99" class="quantity">
+                                        <input data-product-id="<?= $product['product']->getId() ?>" type="number" name="quantity[<?= $product['product']->getId() ?>]" value="<?= $product['quantity'] ?>" min="1" max="99" class="quantity">
                                     </td>
                                     <td>
-                                        <svg class="remove_product" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
-                                            <path d="M18 6 6 18" />
-                                            <path d="m6 6 12 12" />
-                                        </svg>
+                                        <a href="/cart/removeFromCart?id=<?= $product['product']->getId() ?>">
+                                            <svg class="remove_product" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
+                                                <path d="M18 6 6 18" />
+                                                <path d="m6 6 12 12" />
+                                            </svg>
+                                        </a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -57,7 +57,7 @@ require_once 'partials/header.php';
                             </th>
                             <td colspan="3">
                                 <span id="total">
-                                    0.00
+                                    <?= $total ?>
                                 </span>
                                 €
                             </td>
@@ -65,6 +65,9 @@ require_once 'partials/header.php';
                     </tfoot>
                 </table>
 
+                <a class="button_destructive" href="cart/empty">
+                    Vider le panier
+                </a>
                 <button class="button_primary" style="float: right;">Valider le panier</button>
             </fieldset>
         </form>

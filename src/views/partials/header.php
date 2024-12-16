@@ -56,9 +56,11 @@
         <div id="nav_account">
             <a class="nav_button" href="<?= BASE_PATH.'/cart'?>">Panier</a>
             <?php if (isset($_SESSION['user'])) { ?>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                <?=$_SESSION['user']['name'];?>
-                <a class="nav_button" href="<?= BASE_PATH; ?>/logout">Déconnexion</a>
+                <div style="display: flex; align-items: center; margin-left: 2em;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <?=$_SESSION['user']['firstname'];?>
+                </div>
+                <a class="nav_button" href="<?= BASE_PATH; ?>/account/logout">Déconnexion</a>
             <?php } else { ?>
                 <a class="nav_button" href="<?= BASE_PATH; ?>/login">Connexion</a>
             <?php } ?>
@@ -74,8 +76,8 @@
                 <a class="nav_button" href="<?= BASE_PATH.'/cart'?>">Panier</a>
                 <?php if (isset($_SESSION['user'])) { ?>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    <?=$_SESSION['user']['name'];?>
-                    <a class="nav_button" href="<?= BASE_PATH; ?>/logout">Déconnexion</a>
+                    <?=$_SESSION['user']['firstname'];?>
+                    <a class="nav_button" href="<?= BASE_PATH; ?>/account/logout">Déconnexion</a>
                 <?php } else { ?>
                     <a class="nav_button" href="<?= BASE_PATH; ?>/login">Connexion</a>
                 <?php } ?>
